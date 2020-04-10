@@ -1,8 +1,6 @@
 # INT 332 Lab Assignment 2
 ## DevOps Virtualization and Configuration Management
 
-
-
 > By-
 > Name: Kathi Raja Ravindra,
 > Redg No. 11702961,
