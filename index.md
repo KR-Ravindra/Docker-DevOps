@@ -1,4 +1,3 @@
-
 # INT 332 Lab Assignment 2
 ## DevOps Virtualization and Configuration Management
 
@@ -133,7 +132,7 @@ _On Production Machine_:
 * [x] Dockerfile to copy code into the custom image.
 * [x] Deploy the website.
 
-> [Click here to return](#INT-332-Lab-Assignment-2)
+> [Click here to return](#int-332-lab-assignment-2)
 
 ---
 
@@ -275,7 +274,8 @@ An yaml file named ```docker-compose.yml``` is to be made which contains configu
 
 > _ports_ helps to map the container/webserver to host. Port 91 of host is mapped to apache2 services's port 80 and port 92 of host is mapped to nginx service's exposed port 80.
 
-> ```build``` under apache2 services specifies ```./apache``` which is a path to _Dockerfile_ while ```image``` under nginx service specifies ```nginx:latest``` which will be available on host/ global registry (if not present on local machine).
+> ```build``` under apache2 services specifies ```./apache``` which is a path to _Dockerfile_ 
+> ```image``` under nginx service specifies ```nginx:latest``` which will be available on host/ global registry (if not on local machine).
 
 
 ```bash 
@@ -325,7 +325,7 @@ _Important Note: Company's page is deployed on the apache server at port 91_
 
 > _Objectives Fullfiled_:
 
-* [x] ```docker-compose.yml``` file to launch apache and nginx servers.
+* [x] _```docker-compose.yml```_ file to launch apache and nginx servers.
 
 * [x] Port 91 and Port 92 for _apache_ and _nginx_ servers respectively.
 
@@ -424,8 +424,7 @@ sudo docker network inspect MyNetwork
 * To ping _Master Node_ execute the follwoing on _Worker Node_
 
 ```bash 
-$ sudo docker exec -it <containerID> bash
-ping 10.0.2.250
+$ sudo docker exec -it <containerID> ping 10.0.2.250
 ```
 ![Image](Solution/Tutorial3/fourth9.png)
 
@@ -434,14 +433,12 @@ ping 10.0.2.250
 > On MasterNode:
 
 ```bash
-$ sudo docker exec -it <containerID> bash
-ping 10.0.2.251
+$ sudo docker exec -it <containerID> ping 10.0.2.251
 ```
 > On WorkerNode:
 
 ```bash
-$ sudo docker exec -it <containerID> bash
-ping 10.0.2.250
+$ sudo docker exec -it <containerID> ping 10.0.2.250
 ```
 ![Image](Solution/Tutorial3/fourth10.png)
 
@@ -608,7 +605,7 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 * [x] Install Jenkins on ubuntu 18.04.
 * [x] Explain Jenkins by creating a sample job.
 
-> [Click here to return](#INT-332-Lab-Assignment-2)
+> [Click here to return](#int-332-lab-assignment-2)
 
 ---
 
