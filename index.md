@@ -1,24 +1,29 @@
 
 # INT332-DEVOPS Virtualization and Configuration Management
 
-##Lab Assignment - 2
+## Lab Assignment - 2
 
 
 > By-
-> Name: Kathi Raja Ravindra
-> Redg No. 11702961
+> Name: Kathi Raja Ravindra,
+> Redg No. 11702961,
 > Roll No. B37
 
 > Submitted to-
 > Dr. Vijay Kumar Garg
 
 
+---
 
+> Naviagation:
 
+[CaseStudy1](#case-study-1) | [CaseStudy2](#case-study-2)
 
-
+---
 
 ## Case Study 1:
+
+
 
 > ### _Question_:
 
@@ -132,11 +137,20 @@ _On Production Machine_:
 
 ___
 
+[Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
+
+---
+
 ## Case Study 2:
 
 
-
 You have been hired as a Devops Engineer in Grape Vine Pvt. Ltd. You have been asked to improve the way the company is managing their Docker containers. Following tasks have been assigned:
+
+> Navigation:
+
+[Question1](#question-1) | [Question2](#question-2) | [Question3](#question-3) | [Question4](#question-4) |
+
+---
 
 > ### _Question 1_:
 
@@ -233,6 +247,10 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 
 ---
 
+[Click here to return to CaseStudy 2](#case-study-2)
+
+---
+
 > ### _Question 2_:
 Deploy apache and nginx containers using Docker Compose, Apache should be exposed on Port 91 and nginx on port 92.
 
@@ -310,6 +328,10 @@ _Important Note: Company's page is deployed on the apache server at port 91_
 * [x] ```docker-compose.yml``` file to launch apache and nginx servers.
 
 * [x] Port 91 and Port 92 for _apache_ and _nginx_ servers respectively.
+
+---
+
+[Click here to return to CaseStudy 2](#case-study-2)
 
 ---
 > ### _Question 3_:
@@ -432,6 +454,10 @@ ping 10.0.2.250
 * [x] Use docker service to populate the swarm.
 
 * [x] Show connection over overlay network by means of ping.
+
+---
+
+[Click here to return to CaseStudy 2](#case-study-2)
 
 ---
 > ### _Question 4_:
@@ -560,6 +586,11 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 
 * [x] Install Jenkins on ubuntu 18.04.
 * [x] Explain Jenkins by creating a sample job.
+
+---
+
+[Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
+
 ---
 
 Can be viewed at [GitHub](https://github.com/KR-Ravindra/DockerProject.git)
