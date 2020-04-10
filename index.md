@@ -1,6 +1,13 @@
 
+<<<<<<< HEAD
 # INT 332 Lab Assignment 2
 ## DevOps Virtualization and Configuration Management
+||||||| f5dbc16
+# INT332-DEVOPS Virtualization and Configuration Management
+=======
+# INT 332 Lab Assignment 2
+# DevOps Virtualization and Configuration Management
+>>>>>>> 7202ad100b750705074629fdce60735e61e1bded
 
 
 
