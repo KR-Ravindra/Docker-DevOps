@@ -1,7 +1,7 @@
 
-# INT332-DEVOPS Virtualization and Configuration Management
+# INT 332 Lab Assignment 2
+## DevOps Virtualization and Configuration Management
 
-## Lab Assignment - 2
 
 
 > By-
@@ -17,7 +17,6 @@
 
 > [CaseStudy1](#case-study-1) | [CaseStudy2](#case-study-2)
 
----
 
 ## Case Study 1:
 
@@ -40,7 +39,7 @@ The company wants the following things:
 
 I am supposed to deploy the company's portfolio website on apache server.
 * Initially I will develop the required custom image on Developer Machine ('_DockerDevelop_') and push it into the repository.
-*  Then I will deploy the code for website given by the company on Production Machine ('_DockerProduction_') using a _Dockerfile_ that uses the custom image.
+*  Then I will copy the code for website given by the company on Production Machine ('_DockerProduction_') using a _Dockerfile_ into a custom image that deploys the webserver.
 
 > _Objectives_:
 
@@ -107,6 +106,7 @@ $ sudo docker push <username/imageName>
 ![Image](Solution/Tutorial/Image6.png)
 
 * Now run the image and launch the _portfolio_ website on the server using the following command.
+  
 ```bash
   $ sudo docker run -d -p 8080:80 <imageName>
 ```
@@ -118,9 +118,9 @@ $ sudo docker push <username/imageName>
 
  > ```--name``` tag will allow us to provide name for our container/instance of webserver image viz. _CompanyPortfolio_ here
 
-``` -d ``` runs the container in detached mode.
+> ``` -d ``` runs the container in detached mode.
 
-* The Company Website is live and running as requested at [localhost](0.0.0.0:8080/index.html).
+* The Company Website is live and running as requested at [localhost:8080/index.html](0.0.0.0:8080/index.html).
   
 ---  
 >_Objectives Fullfiled_:
@@ -133,8 +133,7 @@ _On Production Machine_:
 * [x] Dockerfile to copy code into the custom image.
 * [x] Deploy the website.
 
-
-> [Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
+> [Click here to return](#INT-332-Lab-Assignment-2)
 
 ---
 
@@ -145,7 +144,6 @@ You have been hired as a Devops Engineer in Grape Vine Pvt. Ltd. You have been a
 
 > [Question1](#question-1) | [Question2](#question-2) | [Question3](#question-3) | [Question4](#question-4) |
 
----
 
 > ### _Question 1_:
 
@@ -153,7 +151,7 @@ You have been hired as a Devops Engineer in Grape Vine Pvt. Ltd. You have been a
 
  > _Approach/Scenario_:
 
-The company deploys their website [GrapeVine](google.com). The company later finds that the _About_ button on the webpage  is broken and is needed to be replaced by their portfolio webpage. The code for the website is deployed on the Apache server which is mounted on to the host system (_GrapeVine_). 
+The company deploys their website [GrapeVine](google.com). The company later finds that the _About_ button on the webpage  is broken and is needed to be replaced by their portfolio webpage. The website is deployed on the Apache server which is mounted on host system (_GrapeVine_). 
 
  > _Objectives_:
 * [ ] Run apache webserver by mounting it to ther host machine
@@ -165,8 +163,11 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 > Demonstration of _bind mounts_ in docker.
 
 * Run the apache image mounting it to the _code folder_ (_ProjectRubric_) on host machine (_GrapeVine_) using following commands.
-  ```bash
-  $ sudo docker run -d -p 81:80 --name <nameOfContainer> -v <hostPathToCode>:<pathInContainer> <imageName>
+  
+```bash
+  $ sudo docker run -d -p 81:80 --name
+ <nameOfContainer> -v <hostPathToCode>:<pathInContainer> <imageName>
+```
 ![Image](Solution/Tutorial1/Second1.png)
 
 >  ```---name``` help us in naming and assigning tag to the image that will be built by ```docker run``` viz. _GrapeVine_ here.
@@ -183,6 +184,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 > Demonstration of dynamic allocation (benefit of bind mount)
 
 * To fix these we need to do modifications on a couple of files (_index.html_ & _portfolio/index.html_), before performing this let us verify that the files on both host and mounted directory in container are same using following commands.
+  
     * Copying data present on container machine into _indexOld.html_ and _portfolio/indexOld.html_ on host machine.
 
     ```bash
@@ -191,7 +193,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
     ```
     > It is to be noted that the working directory of the container _GrapeVine_ is set to _/var/www/html/_.
 
-    * Let us compare the derived files and host machine file to verify if they are same.
+    * Let us compare the derived files and host machine files to verify if they are same.
   
     ```bash
     $ diff index.html indexOld.html
@@ -209,13 +211,13 @@ The company deploys their website [GrapeVine](google.com). The company later fin
     $ diff index.html indexOld.html
     $ diff ./portfolio/index.html ./portfolio/indexOld.html
 ```
-> The output as shown in image lists the modifications in different files ( lists files using sha code ) seperated by '---' and enclosed in '< >'
+> The output as shown in image lists the modifications in different files ( lists files using sha code ) seperated by ```---``` and enclosed in '< >'
 
-> The line above '---' represents the modified code and the line below '---' represents code from derived files (old code). 
+> The line above ```---``` represents the modified code and the line below ```---``` represents code from derived files (old code). 
 
 ![Image](Solution/Tutorial1/Second4.png)
 
-* To check if the modifications are also processed in the container, use the following code which can also be referred in the above image.
+* To check if the modifications were also processed in the container, use the following code which can also be referred in the above image.
 
  ```bash
     $ sudo docker exec GrapeVine cat index.html > indexOld.html
@@ -238,22 +240,23 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 * [x] Process the required modifications.
 * [x] Verify the changes.
 
-> Demonstration of _bind mounts_ in docker successful. [Click here to return to CaseStudy 2](#case-study-2)
+> Demonstration of _bind mounts_ in docker. [Click here to return to CaseStudy 2](#case-study-2)
 
 ---
 
 > ### _Question 2_:
+
 Deploy apache and nginx containers using Docker Compose, Apache should be exposed on Port 91 and nginx on port 92.
 
 > _Approach/Scenario_:
 
-An yaml file named ```docker-compose.yml``` is to be made which contains configuration about launching apache and nginx servers on required ports. To make apache image I will use a _Dockerfile_ and I will use _nginx_ image from the docker global repository for nginx server. Docker Compose version 3 will be used in the above said yaml file.
+An yaml file named ```docker-compose.yml``` is to be made which contains configuration about launching apache and nginx servers on desired ports. To make apache image I will use a _Dockerfile_ and _nginx_ image from the docker global repository for nginx server. Docker Compose version 3 will be used in the above said yaml file.
 
 
 
 > _Objectives_:
 
-* [ ] ```docker-compose.yml``` file to launch apache and nginx servers.
+* [ ]```docker-compose.yml``` file to launch apache and nginx servers.
 
 * [ ] Port 91 and Port 92 for _apache_ and _nginx_ servers respectively.
 
@@ -265,13 +268,15 @@ An yaml file named ```docker-compose.yml``` is to be made which contains configu
 
 * Create a file named, ```docker-compose.yml``` and write the following as shown in the image.
 
+
+![Image](Solution/Tutorial2/third2.png)
+
 > _apache2_,_nginx_ listed under _services_ are the names of services that we want our docker compose file to perform.
 
 > _ports_ helps to map the container/webserver to host. Port 91 of host is mapped to apache2 services's port 80 and port 92 of host is mapped to nginx service's exposed port 80.
 
-> ```build``` under apache2 services specifies ```./apache``` which is a path to _Dockerfile_ while ```image``` under nginx service specifies ```nginx:latest``` which will be available on host/ global registry.
+> ```build``` under apache2 services specifies ```./apache``` which is a path to _Dockerfile_ while ```image``` under nginx service specifies ```nginx:latest``` which will be available on host/ global registry (if not present on local machine).
 
-![Image](Solution/Tutorial2/third2.png)
 
 ```bash 
 $cat docker-compose.yml
@@ -287,19 +292,23 @@ services:
             ports:
                 - 92:80
 ```
+
 * Execute the ```docker-compose.yml``` using following command:
 
 ```bash
 $ sudo docker-compose up
 ```
+
 ![Image](Solution/Tutorial2/third3.png)
 
 > The file populates the necessary services in layers (9 layers in image).
 
 > A confirmation message ```done``` is printed on console for each of the service as shown in image.
+
 ![Image](Solution/Tutorial2/third4.png)
 
 * To verify nginx server, open [localhost:92]() in browser.
+
 ![Image](Solution/Tutorial2/third5.png)
 
 * To verify apache server, open [localhost:91]() in browser.
@@ -324,6 +333,7 @@ _Important Note: Company's page is deployed on the apache server at port 91_
 
 ---
 > ### _Question 3_:
+
  Initialize a Docker Swarm Cluster, and deploy two ubuntu containers in a overlay network. Demonstrate they can communicate with each other, by pinging them.
 
 > _Approach/Scenario_:
@@ -341,16 +351,19 @@ I will create a _docker network_ and initiate a _docker swarm_ cluster. Then aft
 * [ ] Use docker service to populate the swarm.
 
 * [ ] Show connection over overlay network by means of ping.
+
 ---
+
 * Two _EC2_ instances _Master Node_ and _Worker Node_ are spun on _AWS_ platform.
 
 ![Image](Solution/Tutorial3/fourth1.png)
 
-* Docker is installed and _docker swarm_ is instantiated on _Master Node_ which will be the _Leader_ of the swarm.
+* Docker is installed and _docker swarm_ is instantiated on _Master Node_ which will act as _Leader_ of the swarm.
 
 ```bash
 $ sudo docker swarm init
 ```
+
 ![Image](Solution/Tutorial3/fourth2.png)
 
 * On Worker node, the token collected from Leader is used to join the Worker into swarm.
@@ -448,18 +461,21 @@ ping 10.0.2.250
 
 ---
 > ### _Question 4_:
+
 Install Jenkins and create any sample job to demonstrate its operation.
 
 > _Approach/Scenario_:
 
-First part, shows the installation of jenkins on Ubuntu 18.04. Second part builds a basic job on jenkins to support Continous Integration of a sample java code.
+First part shows the installation of Jenkins on Ubuntu 18.04. Second part builds a basic job on jenkins to support Continous Integration of a sample java code.
 
 
 > _Objectives_:
 
 * [ ] Install Jenkins on ubuntu 18.04.
 * [ ] Explain Jenkins by creating a sample job.
+
 ---
+
 * Use following commands to install jenkins on Ubuntu.
 
 ```bash
@@ -471,35 +487,41 @@ $ sudo apt install jenkins
 $ systemctl status jenkins
 $ sudo ufw allow 8080
 ```
+
 Open [localhost:8080]() after executing above.
 
 * Find the password in host using 
+
 ```bash 
 $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
+
 ![Image](Solution/Tutorial4/Initial1.jpg)
 
 * Proceed to add required plugins and create login credentials.
+
 ![Image](Solution/Tutorial4/Initial2.jpg)
 
 * You can edit the Jenkins URL or leave the auto generated and then you are ready.
+
 ![Image](Solution/Tutorial4/Initial3.jpg)
 
 ![Image](Solution/Tutorial4/Initial4.jpg)
 
 > Demonstration of Jenkins
 
-* Create a sample helloWorld.java program as shown in image.
+* Create a sample helloWorld.java program as shown in image on the host machine.
 
 ![Image](Solution/Tutorial4/Main1.png)
 
-* Select _Create Job_/_New Item_ on jenkins dashboard and name it.
+* Select _Create Job_ / _New Item_ on jenkins dashboard and name it.
 
 ![Image](Solution/Tutorial4/Main2.png)
 
 > _JavaTest_ is the name of our job which is listed as _Freestyle project_.
 
 * Give a decent description to the job and select the option _Build Periodically_ to automate the building process.
+
 ![Image](Solution/Tutorial4/Main3.png)
 
 > ```* * * * *``` says that a new build will be made every other minute.
@@ -507,25 +529,31 @@ $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ![Image](Solution/Tutorial4/Main4.png)
 
 * Select _ExecuteShell_ in the Build section and enter the following code as shown in image to test the HelloWorld.java program we created in the hostmachine.
+
 ![Image](Solution/Tutorial4/Main5.png)
 ![Image](Solution/Tutorial4/Main6.png)
+
 > The Execute Shell lists the commands to be executed on every build.
 
 * We created our first job _JavaTest_ .
+
 ![Image](Solution/Tutorial4/Main7.png)
+
 > On left bottom corner you can see the history of our builds.
 
 ![Image](Solution/Tutorial4/primary.png)
+
 > The dashboard view of the job is shown in above image.
 
 > Blue circle means the build passes the test, and the Sun beside it represents the health of the project (current 100%).
 
-* To view output of a build, 
+* To view output of a build,
 Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
+
 ![Image](Solution/Tutorial4/Main8.png)
 ![Image](Solution/Tutorial4/Main9.png)
 
-* To try failing our job, edit the HelloWorld.java as follows which will result in an error, and then let us check the build history and failed job output
+* To try failing our job, edit the HelloWorld.java as follows which will result in an error and then check the build history to view failed job output.
 
 ![Image](Solution/Tutorial4/Main10.png)
 
@@ -534,9 +562,11 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 > Verify this on Jenkins...
 
 ![Image](Solution/Tutorial4/Main11.png)
+
 > A pink circle indicates that our job failed
 
 ![Image](Solution/Tutorial4/Main12.png)
+
 > The output log shows the error and _FAILED_ build at the end of output as shown in the image.
 
 * Verify the failed build in dashboard.
@@ -567,14 +597,18 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 
 > A healthier dashboard is visible again after 16 builds, the last failed build is 11 and our health is at 100% (Sun).
 
-* In this way one can continously build code and commit changes without the worry of testing it. Jenkins automates the process of Continously integrating the new code without developer intervention and notifies if there is a failure in the recent builds so that one could verify the problem and rectify it. Projected on a large view this tool supports the Continous Integration pipeline where large chunks of codes can be updated simultaneously to the production server leaving testing to automation which in turn saves massive amount of hours spent on testing code.
+* In this way one can continously build code and commit changes without the worries of testing it. 
+
+* Jenkins automates the process of testing the new code without developer intervention and notifies if there is a failure in the recent builds so that one could verify the problem and rectify it. 
+
+* Projected on a large view this tool supports the Continous Integration pipeline where large chunks of codes can be updated simultaneously to the production server leaving testing to automation which in turn saves massive amount of hours spent on testing code.
 
 > _Objectives Fullfiled_:
 
 * [x] Install Jenkins on ubuntu 18.04.
 * [x] Explain Jenkins by creating a sample job.
 
-> [Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
+> [Click here to return](#INT-332-Lab-Assignment-2)
 
 ---
 
