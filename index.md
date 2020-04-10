@@ -58,13 +58,13 @@ _On Production Machine_:
 
 * Login into your _docker hub_ account using ```docker login```
 * Pull the ```Ubuntu``` image and run a container using the following command.
- ![Image](Tutorial/Image1.png)
+ ![Image](Solution/Tutorial/Image1.png)
 
 ```bash
 $ sudo docker pull ubuntu
 $ sudo docker run -it ubuntu bash
 ```
-![Image](Tutorial/Image2.png)
+![Image](Solution/Tutorial/Image2.png)
 
 * Install apache server using following commands.
 ```bash
@@ -75,11 +75,11 @@ apt clean
 ```
 > _utils_ is required for smooth functioning of the server.
 
-![Image](Tutorial/Image3.png)
+![Image](Solution/Tutorial/Image3.png)
 
 * Now commit the container and push the resulting image into Docker Hub repository using the following commands.
   
-  ![Image](Tutorial/Image4.png)
+  ![Image](Solution/Tutorial/Image4.png)
 
 ```bash
 $ sudo docker commit <containerId> <username/imageName>
@@ -91,12 +91,12 @@ $ sudo docker push <username/imageName>
 * Here on the production machine, we have Project code given as _ProjectPortfolio_ which contains the code for the website.
 * Create a _Dockerfile_ to copy the code to our _Custom Image_ that we have pushed earlier
   
-  ![Image](Tutorial/Image5.1.png)
+  ![Image](Solution/Tutorial/Image5.1.png)
 > The above file uses the image that we pushed earlier viz. _krravindra/portfolio_ here.
 
 * Now build by using this _Dockerfile_ 
 
-  ![Image 1](Tutorial/Image5.0.png)
+  ![Image 1](Solution/Tutorial/Image5.0.png)
 
  > ```---tag``` help us in naming and assigning tag to the image that will be built by ```docker build``` viz. _portfolio_ here.
 
@@ -104,7 +104,7 @@ $ sudo docker push <username/imageName>
 
  * Once the build is complete, we can see a new image named _portfolio_ is listed in ``` docker images``` 
 
-![Image](Tutorial/Image6.png) 
+![Image](Solution/Tutorial/Image6.png)
 
 * Now run the image and launch the _portfolio_ website on the server using the following command.
 ```bash
@@ -112,7 +112,7 @@ $ sudo docker push <username/imageName>
 ```
 > Open <u>localhost:8080/index.html</u> to view the website.
 
-![Image](Tutorial/Image7.png)
+![Image](Solution/Tutorial/Image7.png)
  
  > ```-p 8080:80``` port maps the the _80_ port exposed by the custom apache server to _8080_ port on host machine.
 
@@ -167,7 +167,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 * Run the apache image mounting it to the _code folder_ (_ProjectRubric_) on host machine (_GrapeVine_) using following commands.
   ```bash
   $ sudo docker run -d -p 81:80 --name <nameOfContainer> -v <hostPathToCode>:<pathInContainer> <imageName>
-![Image](Tutorial1/Second1.png)
+![Image](Solution/Tutorial1/Second1.png)
 
 >  ```---name``` help us in naming and assigning tag to the image that will be built by ```docker run``` viz. _GrapeVine_ here.
 
@@ -178,7 +178,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 
 * Website is deployed on the server at [localhost:81/index.html](). However we can see that the _About_ button redirecting us to a broken page.  
 
-![Image](Tutorial1/Second2.png)
+![Image](Solution/Tutorial1/Second2.png)
 
 > Demonstration of dynamic allocation (benefit of bind mount)
 
@@ -201,7 +201,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 
     * Successfully Verified. Now perform the required modifications.
 
-![Image](Tutorial1/Second3.png)
+![Image](Solution/Tutorial1/Second3.png)
 
 * After performing the modifications, let us again compare both the files with previous derived files using the following commands.
   
@@ -213,7 +213,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 
 > The line above '---' represents the modified code and the line below '---' represents code from derived files (old code). 
 
-![Image](Tutorial1/Second4.png)
+![Image](Solution/Tutorial1/Second4.png)
 
 * To check if the modifications are also processed in the container, use the following code which can also be referred in the above image.
 
@@ -231,7 +231,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 
 > Visual Modifications: Background Image changed, Fixed About button redirect.
 
-![Image](Tutorial1/Second5.png)
+![Image](Solution/Tutorial1/Second5.png)
 
  > _Objectives Fullfiled_:
 * [x] Run apache webserver by mounting it to ther host machine
@@ -261,7 +261,7 @@ An yaml file named ```docker-compose.yml``` is to be made which contains configu
 
 * On the host machine (_GrapeVine_), a _Dockerfile_ to build an _apache_ image is written as follows.
 
-![Image](Tutorial2/third1.png)
+![Image](Solution/Tutorial2/third1.png)
 
 * Create a file named, ```docker-compose.yml``` and write the following as shown in the image.
 
@@ -271,7 +271,7 @@ An yaml file named ```docker-compose.yml``` is to be made which contains configu
 
 > ```build``` under apache2 services specifies ```./apache``` which is a path to _Dockerfile_ while ```image``` under nginx service specifies ```nginx:latest``` which will be available on host/ global registry.
 
-![Image](Tutorial2/third2.png)
+![Image](Solution/Tutorial2/third2.png)
 
 ```bash 
 $cat docker-compose.yml
@@ -292,23 +292,23 @@ services:
 ```bash
 $ sudo docker-compose up
 ```
-![Image](Tutorial2/third3.png)
+![Image](Solution/Tutorial2/third3.png)
 
 > The file populates the necessary services in layers (9 layers in image).
 
 > A confirmation message ```done``` is printed on console for each of the service as shown in image.
-![Image](Tutorial2/third4.png)
+![Image](Solution/Tutorial2/third4.png)
 
 * To verify nginx server, open [localhost:92]() in browser.
-![Image](Tutorial2/third5.png)
+![Image](Solution/Tutorial2/third5.png)
 
 * To verify apache server, open [localhost:91]() in browser.
 
 _Important Note: Company's page is deployed on the apache server at port 91_
-![Image](Tutorial2/third6.png)
+![Image](Solution/Tutorial2/third6.png)
 
 * Verify the containers and the activity on console.
-![Image](Tutorial2/third8.png)
+![Image](Solution/Tutorial2/third8.png)
 
 > Whenever the page is hit, the log prints the ```GET``` request which can be seen in the first half of image.
 
@@ -344,14 +344,14 @@ I will create a _docker network_ and initiate a _docker swarm_ cluster. Then aft
 ---
 * Two _EC2_ instances _Master Node_ and _Worker Node_ are spun on _AWS_ platform.
 
-![Image](Tutorial3/fourth1.png)
+![Image](Solution/Tutorial3/fourth1.png)
 
 * Docker is installed and _docker swarm_ is instantiated on _Master Node_ which will be the _Leader_ of the swarm.
 
 ```bash
 $ sudo docker swarm init
 ```
-![Image](Tutorial3/fourth2.png)
+![Image](Solution/Tutorial3/fourth2.png)
 
 * On Worker node, the token collected from Leader is used to join the Worker into swarm.
 
@@ -359,28 +359,28 @@ $ sudo docker swarm init
 $ sudo docker join --token <tokenID>
 ```
 
-![Image](Tutorial3/fourth3.png)
+![Image](Solution/Tutorial3/fourth3.png)
 
 * List the docker networks in Leader node using the following command.
 
 ```bash
 $ sudo docker network ls
 ```
-![Image](Tutorial3/fourth4.png)
+![Image](Solution/Tutorial3/fourth4.png)
 
 * To create and inspect an Overlay network, use the following commands.
 
 ```bash
 $ sudo docker network create --driver overlay MyNetwork 
 ```
-![Image](Tutorial3/fourth5.png)
+![Image](Solution/Tutorial3/fourth5.png)
 
 > _MyNetwork_ is the name of the overlay network.
 
 ```bash
 $ sudo docker network inspect MyNetwork
 ```
-![Image](Tutorial3/fourth6.png)
+![Image](Solution/Tutorial3/fourth6.png)
 
 > Note that this network domain is on the _Subnet: 10.0.2.0/24_, every container that uses this network will be assigned an address in this subnet.
 
@@ -389,7 +389,7 @@ $ sudo docker network inspect MyNetwork
 ```bash
 $ sudo docker service create --name Pingservice --replicas 2 --network MyNetwork ubuntu sleep 2d
 ```
-![Image](Tutorial3/fourth7.png)
+![Image](Solution/Tutorial3/fourth7.png)
 
 > _Pingservice_ is the name of the service created.
 
@@ -402,7 +402,7 @@ $ sudo docker service create --name Pingservice --replicas 2 --network MyNetwork
 ```bash
 sudo docker network inspect MyNetwork
 ```
-![Image](Tutorial3/fourth8.png)
+![Image](Solution/Tutorial3/fourth8.png)
 
 > _Leader Node_ is on ip 10.0.2.250/24 belonging to MyNetwork subnet.
 
@@ -414,7 +414,7 @@ sudo docker network inspect MyNetwork
 $ sudo docker exec -it <containerID> bash
 ping 10.0.2.250
 ```
-![Image](Tutorial3/fourth9.png)
+![Image](Solution/Tutorial3/fourth9.png)
 
 * To ping each other simultaneously,
 
@@ -430,7 +430,7 @@ ping 10.0.2.251
 $ sudo docker exec -it <containerID> bash
 ping 10.0.2.250
 ```
-![Image](Tutorial3/fourth10.png)
+![Image](Solution/Tutorial3/fourth10.png)
 
 * Successfully executed ping on both nodes of the swarm.
 
@@ -477,71 +477,71 @@ Open [localhost:8080]() after executing above.
 ```bash 
 $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-![Image](Tutorial4/Initial1.jpg)
+![Image](Solution/Tutorial4/Initial1.jpg)
 
 * Proceed to add required plugins and create login credentials.
-![Image](Tutorial4/Initial2.jpg)
+![Image](Solution/Tutorial4/Initial2.jpg)
 
 * You can edit the Jenkins URL or leave the auto generated and then you are ready.
-![Image](Tutorial4/Initial3.jpg)
+![Image](Solution/Tutorial4/Initial3.jpg)
 
-![Image](Tutorial4/Initial4.jpg)
+![Image](Solution/Tutorial4/Initial4.jpg)
 
 > Demonstration of Jenkins
 
 * Create a sample helloWorld.java program as shown in image.
 
-![Image](Tutorial4/Main1.png)
+![Image](Solution/Tutorial4/Main1.png)
 
 * Select _Create Job_/_New Item_ on jenkins dashboard and name it.
 
-![Image](Tutorial4/Main2.png)
+![Image](Solution/Tutorial4/Main2.png)
 
 > _JavaTest_ is the name of our job which is listed as _Freestyle project_.
 
 * Give a decent description to the job and select the option _Build Periodically_ to automate the building process.
-![Image](Tutorial4/Main3.png)
+![Image](Solution/Tutorial4/Main3.png)
 
 > ```* * * * *``` says that a new build will be made every other minute.
 
-![Image](Tutorial4/Main4.png)
+![Image](Solution/Tutorial4/Main4.png)
 
 * Select _ExecuteShell_ in the Build section and enter the following code as shown in image to test the HelloWorld.java program we created in the hostmachine.
-![Image](Tutorial4/Main5.png)
-![Image](Tutorial4/Main6.png)
+![Image](Solution/Tutorial4/Main5.png)
+![Image](Solution/Tutorial4/Main6.png)
 > The Execute Shell lists the commands to be executed on every build.
 
 * We created our first job _JavaTest_ .
-![Image](Tutorial4/Main7.png)
+![Image](Solution/Tutorial4/Main7.png)
 > On left bottom corner you can see the history of our builds.
 
-![Image](Tutorial4/primary.png)
+![Image](Solution/Tutorial4/primary.png)
 > The dashboard view of the job is shown in above image.
 
 > Blue circle means the build passes the test, and the Sun beside it represents the health of the project (current 100%).
 
 * To view output of a build, 
 Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
-![Image](Tutorial4/Main8.png)
-![Image](Tutorial4/Main9.png)
+![Image](Solution/Tutorial4/Main8.png)
+![Image](Solution/Tutorial4/Main9.png)
 
 * To try failing our job, edit the HelloWorld.java as follows which will result in an error, and then let us check the build history and failed job output
 
-![Image](Tutorial4/Main10.png)
+![Image](Solution/Tutorial4/Main10.png)
 
 >Removed " in println function which will throw an error. 
 
 > Verify this on Jenkins...
 
-![Image](Tutorial4/Main11.png)
+![Image](Solution/Tutorial4/Main11.png)
 > A pink circle indicates that our job failed
 
-![Image](Tutorial4/Main12.png)
+![Image](Solution/Tutorial4/Main12.png)
 > The output log shows the error and _FAILED_ build at the end of output as shown in the image.
 
 * Verify the failed build in dashboard.
 
-![Image](Tutorial4/Main13.png)
+![Image](Solution/Tutorial4/Main13.png)
 
 >A pink ball notifies the test failed.
 
@@ -549,7 +549,7 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 
 * Modify the HelloWorld.java and Check the Jenkins dashboard again.
 
-![Image](Tutorial4/Main14.png)
+![Image](Solution/Tutorial4/Main14.png)
 
 > After modification, the ball is blue which shows that our testcases in the latest build have passed.
 
@@ -557,13 +557,13 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 
 * Now, click the _BuildHistory_ option on left side in the dashboard to view the whole project against a graph.
 
-![Image](Tutorial4/Main15.png)
+![Image](Solution/Tutorial4/Main15.png)
 
 > The image shows a couple of jobs in the build that is released after build 6 failed till build 11 after which it is corrected.
 
 > This shows an overall view of how our code/project did over a period of time.
 
-![Image](Tutorial4/Main16.png)
+![Image](Solution/Tutorial4/Main16.png)
 
 > A healthier dashboard is visible again after 16 builds, the last failed build is 11 and our health is at 100% (Sun).
 
