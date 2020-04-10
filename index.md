@@ -15,9 +15,7 @@
 
 ---
 
-> Naviagation:
-
-[CaseStudy1](#case-study-1) | [CaseStudy2](#case-study-2)
+> [CaseStudy1](#case-study-1) | [CaseStudy2](#case-study-2)
 
 ---
 
@@ -135,9 +133,8 @@ _On Production Machine_:
 * [x] Dockerfile to copy code into the custom image.
 * [x] Deploy the website.
 
-___
 
-[Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
+> [Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
 
 ---
 
@@ -146,9 +143,7 @@ ___
 
 You have been hired as a Devops Engineer in Grape Vine Pvt. Ltd. You have been asked to improve the way the company is managing their Docker containers. Following tasks have been assigned:
 
-> Navigation:
-
-[Question1](#question-1) | [Question2](#question-2) | [Question3](#question-3) | [Question4](#question-4) |
+> [Question1](#question-1) | [Question2](#question-2) | [Question3](#question-3) | [Question4](#question-4) |
 
 ---
 
@@ -243,11 +238,7 @@ The company deploys their website [GrapeVine](google.com). The company later fin
 * [x] Process the required modifications.
 * [x] Verify the changes.
 
-> Demonstration of _bind mounts_ in docker successful.
-
----
-
-[Click here to return to CaseStudy 2](#case-study-2)
+> Demonstration of _bind mounts_ in docker successful. [Click here to return to CaseStudy 2](#case-study-2)
 
 ---
 
@@ -329,9 +320,7 @@ _Important Note: Company's page is deployed on the apache server at port 91_
 
 * [x] Port 91 and Port 92 for _apache_ and _nginx_ servers respectively.
 
----
-
-[Click here to return to CaseStudy 2](#case-study-2)
+>[Click here to return to CaseStudy 2](#case-study-2)
 
 ---
 > ### _Question 3_:
@@ -455,9 +444,7 @@ ping 10.0.2.250
 
 * [x] Show connection over overlay network by means of ping.
 
----
-
-[Click here to return to CaseStudy 2](#case-study-2)
+> [Click here to return to CaseStudy 2](#case-study-2)
 
 ---
 > ### _Question 4_:
@@ -587,10 +574,8 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 * [x] Install Jenkins on ubuntu 18.04.
 * [x] Explain Jenkins by creating a sample job.
 
----
-
-[Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
+> [Click here to return](#INT332-DEVOPS-Virtualization-and-Configuration-Management)
 
 ---
 
-Can be viewed at [GitHub](https://github.com/KR-Ravindra/DockerProject.git) and [WebSite](https://kr-ravindra.github.io/DockerProject/)
+Can be viewed at [GitHub](https://github.com/KR-Ravindra/DockerProject.git) and [Website.](https://kr-ravindra.github.io/DockerProject/)
