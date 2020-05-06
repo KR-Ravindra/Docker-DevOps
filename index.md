@@ -1,4 +1,3 @@
-# INT 332 Lab Assignment 2
 ## DevOps Virtualization and Configuration Management
 
 > By-
@@ -130,7 +129,8 @@ _On Production Machine_:
 * [x] Dockerfile to copy code into the custom image.
 * [x] Deploy the website.
 
-> [Click here to return](#int-332-lab-assignment-2)
+> [Click here to return](#devops-virtualization-and-configuration-management)
+
 
 ---
 
@@ -603,7 +603,7 @@ Click ItemName (JavaTest) --> Build (right click) --> select _ConsoleOutput_.
 * [x] Install Jenkins on ubuntu 18.04.
 * [x] Explain Jenkins by creating a sample job.
 
-> [Click here to return](#int-332-lab-assignment-2)
+> [Click here to return](#devops-virtualization-and-configuration-management)
 
 ---
 
